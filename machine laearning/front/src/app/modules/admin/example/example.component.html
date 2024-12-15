@@ -1,0 +1,96 @@
+<div class="container mx-auto p-8 bg-gray-50">
+    <h2 class="text-3xl font-semibold text-center text-gray-900 ">Eco-Economic Data Visualization</h2>
+
+    <!-- Grid Layout for Charts -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h3 class="text-2xl font-medium text-center text-gray-800 mb-4">Value Added by Sector</h3>
+                <div class="relative" style="height: 400px; width: 100%;">
+                    <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"></canvas>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Line Chart for Value Added & Employment Over Time -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h3 class="text-xl font-medium text-center text-gray-800 mb-4">Value Added & Employment Over Time</h3>
+                <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="'line'"></canvas>
+            </div>
+        </div>
+
+        <!-- Pie Chart for GHG Emissions by Region -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h3 class="text-xl font-medium text-center text-gray-800 mb-4">GHG Emissions by Region</h3>
+                <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="'pie'"></canvas>
+            </div>
+        </div>
+
+        <!-- Scatter Plot for Energy vs GHG Emissions -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h3 class="text-xl font-medium text-center text-gray-800 mb-4">Energy vs GHG Emissions</h3>
+                <canvas baseChart [data]="scatterChartData" [options]="scatterChartOptions" [type]="'scatter'"></canvas>
+            </div>
+        </div>
+
+        <!-- Stacked Bar Chart for Employment & Energy by Region -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h3 class="text-xl font-medium text-center text-gray-800 mb-4">Employment & Energy by Region</h3>
+                <canvas baseChart [data]="stackedBarChartData" [options]="stackedBarChartOptions" [type]="'bar'"></canvas>
+            </div>
+        </div>
+
+        <!-- Prediction Form -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h3 class="text-xl font-medium text-center text-gray-800 mb-4">Predict Economic Data</h3>
+
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="region" class="block text-gray-700">Region:</label>
+                        <input [(ngModel)]="region" type="text" id="region" required class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="form-group">
+                        <label for="sector" class="block text-gray-700">Sector:</label>
+                        <input [(ngModel)]="sector" type="text" id="sector" required class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="form-group">
+                        <label for="valueAdded" class="block text-gray-700">Value Added:</label>
+                        <input [(ngModel)]="valueAdded" type="number" id="valueAdded" required class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="form-group">
+                        <label for="employment" class="block text-gray-700">Employment:</label>
+                        <input [(ngModel)]="employment" type="number" id="employment" required class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="form-group">
+                        <label for="ghgEmissions" class="block text-gray-700">GHG Emissions:</label>
+                        <input [(ngModel)]="ghgEmissions" type="number" id="ghgEmissions" required class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="form-group">
+                        <label for="energy" class="block text-gray-700">Energy:</label>
+                        <input [(ngModel)]="energy" type="number" id="energy" required class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="form-group">
+                        <label for="year" class="block text-gray-700">Year:</label>
+                        <input [(ngModel)]="year" type="number" id="year" required class="w-full p-2 border rounded-md">
+                    </div>
+                    <button (click)="onSubmit()" class="w-full bg-blue-600 text-white py-2 rounded-md mt-4 hover:bg-blue-700">
+                        Predict
+                    </button>
+                </div>
+
+                <!-- Display Prediction Result -->
+                <div class="mt-4 text-xl font-bold text-green-600">
+                    {{ prediction }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
